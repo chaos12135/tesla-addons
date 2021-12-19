@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         WDO NEW SETUP
-// @version      0.1
+// @version      0.2
 // @description  Adds new buttons
 // @author       Justin
 // @match        https://warpdrive.teslamotors.com/deliveryops/checkout/*
