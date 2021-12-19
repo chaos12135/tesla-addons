@@ -2,7 +2,7 @@
 // @name         NEXT GEN DASHBOARD
 // @version      0.2
 // @description  Makes the dashboard fullsized
-// @author       Justin Char
+// @author       Justin
 // @match        https://sales-prd.tesla.com/nextgen/dashboard
 // @icon         data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
 // @grant        none
