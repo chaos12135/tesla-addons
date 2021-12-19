@@ -2,7 +2,7 @@
 // @name         WDO NEW SETUP
 // @version      0.1
 // @description  Makes the dashboard fullsized
-// @author       Justin Char
+// @author       Justin
 // @match        https://warpdrive.teslamotors.com/deliveryops/checkout/*
 // @icon         data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
 // @grant        none
