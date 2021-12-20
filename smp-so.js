@@ -19,27 +19,21 @@ function formatPhoneNumber(phoneNumberString) {
 }
 
 function CleanPhoneNumber() {
+    console.log("test1");
     setTimeout(function () {
+        console.log("test2");
         var DocumentIndexPage = document.getElementsByClassName("message-status_children__2fFil")[0];
         if (DocumentIndexPage != null) {
+            console.log("test3");
             var FixedData = DocumentIndexPage.innerHTML.replace(/\D/g, '');
-            if (FixedData.length == 11) {
-                DocumentIndexPage.innerHTML = (formatPhoneNumber(FixedData));
-                //alert("11 data: " + formatPhoneNumber(FixedData));
-            } else if (FixedData.length == 10) {
-                DocumentIndexPage.innerHTML = (formatPhoneNumber(FixedData));
-                //alert("10 data: " + formatPhoneNumber(FixedData));
-            } else {
-                DocumentIndexPage.innerHTML = (formatPhoneNumber(FixedData));
-                //alert("else: " + formatPhoneNumber(FixedData));
-            }
+            DocumentIndexPage.innerHTML = (formatPhoneNumber(FixedData));
         } else {
             CleanPhoneNumber();
         }
     }, 1000);
 };
 
-
+/*
 function OpInfoClean(index) {
     if (index < 1000) {
         setTimeout(function () {
@@ -73,7 +67,7 @@ function OpInfoClean(index) {
         }, 1000);
     }
 };
-
+*/
 
 (function() {
     CleanPhoneNumber();
