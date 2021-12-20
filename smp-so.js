@@ -29,6 +29,9 @@ function CleanPhoneNumber() {
             } else if (FixedData.length == 10) {
                 DocumentIndexPage.innerHTML = (formatPhoneNumber(FixedData));
                 //alert("10 data: " + formatPhoneNumber(FixedData));
+            } else {
+                DocumentIndexPage.innerHTML = (formatPhoneNumber(FixedData));
+                //alert("else: " + formatPhoneNumber(FixedData));
             }
         } else {
             CleanPhoneNumber();
