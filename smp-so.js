@@ -3,7 +3,7 @@
 // @version      0.1
 // @description  Adjusts visuals on Sales OPs
 // @author       Justin
-// @match        https://sales-prd.tesla.com/dashboard/lms/so/details/*
+// @match        https://sales-prd.tesla.com/*
 // @icon         data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
 // @grant        none
 // ==/UserScript==
@@ -18,19 +18,19 @@ function formatPhoneNumber(phoneNumberString) {
     return null;
 }
 
-function CleanPhoneNumber() {
-    console.log("test1");
-    setTimeout(function () {
-        console.log("test2");
-        var DocumentIndexPage = document.getElementsByClassName("message-status_children__2fFil")[0];
-        if (DocumentIndexPage != null) {
-            console.log("test3");
-            var FixedData = DocumentIndexPage.innerHTML.replace(/\D/g, '');
-            DocumentIndexPage.innerHTML = (formatPhoneNumber(FixedData));
-        } else {
-            CleanPhoneNumber();
-        }
-    }, 1000);
+function CleanPhoneNumber(index) {
+    index = (index + 1);
+    if (index < 10) {
+        setTimeout(function () {
+            var DocumentIndexPage = document.getElementsByClassName("message-status_children__2fFil")[0];
+            if (DocumentIndexPage != null) {
+                var FixedData = DocumentIndexPage.innerHTML.replace(/\D/g, '');
+                DocumentIndexPage.innerHTML = (formatPhoneNumber(FixedData));
+            } else {
+                CleanPhoneNumber(index);
+            }
+        }, 1000);
+    };
 };
 
 /*
@@ -70,6 +70,6 @@ function OpInfoClean(index) {
 */
 
 (function() {
-    CleanPhoneNumber();
+    CleanPhoneNumber(0);
     //OpInfoClean(0);
 })();
