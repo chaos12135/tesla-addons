@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         NEXT GEN DASHBOARD
-// @version      0.2
+// @version      0.9
 // @description  Makes the dashboard fullsized
 // @author       Justin
 // @match        https://sales-prd.tesla.com/*
