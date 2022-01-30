@@ -8,6 +8,31 @@
 // @grant        none
 // ==/UserScript==
 
+function VinData() {
+    setTimeout(function () {
+        var headerVin = document.getElementsByClassName("header-Vin")[0];
+        var pathArray = window.location.pathname.split('/');
+
+        if (headerVin != null) {
+            var vinlabel = document.getElementsByClassName("vin-label")[0];
+            let buttonnode = document.createElement("button");
+            buttonnode.setAttribute("size", "medium");
+            buttonnode.setAttribute("class", "tsl-color-blue tsl-size-medium tsl-shape-round tsl-button tsl-appearance-filled ng-star-inserted");
+            buttonnode.setAttribute("style", "margin-top: 7px; background: #F000F0;");
+            buttonnode.setAttribute("onclick", "window.open('https://warpdrive.teslamotors.com/warpdocapi/api/Download/MonroneyDocumentAsFile?DocumentType=Monroney&Vin=" + vinlabel.innerText + "')");
+            let buttontextnode = document.createTextNode("Monroney");
+            buttonnode.appendChild(buttontextnode);
+            headerVin.appendChild(buttonnode);
+
+            var CurrentHTML3 = vinlabel.innerHTML;
+            //vinlabel.innerHTML = (CurrentHTML3 + "</br><button size=\"medium\" class=\"tsl-color-blue tsl-size-medium tsl-shape-round tsl-button tsl-appearance-filled ng-star-inserted\" style=\"margin-right: 30px; background: #F000F0;\" onclick=\"window.open('https://warpdrive.teslamotors.com/warpdocapi/api/Download/MonroneyDocumentAsFile?DocumentType=Monroney&Vin=" + vinlabel.innerText + "')\">Monroney</button></br>");
+        } else {
+            VinData();
+        };
+    }, 1000);
+};
+
+
 function VinMatch() {
     setTimeout(function () {
         var headerVin = document.getElementsByClassName("header-Vin")[0];
@@ -15,13 +40,29 @@ function VinMatch() {
         var pathArray = window.location.pathname.split('/');
 
         if (propertylabel != null && headerVin == null) {
-            var CurrentHTML = propertylabel.innerHTML;
-            propertylabel.innerHTML = (CurrentHTML + "</br><button size=\"medium\" class=\"tsl-color-blue tsl-size-medium tsl-shape-round tsl-button tsl-appearance-filled ng-star-inserted\" style=\"margin-right: 30px;\" onclick=\"window.open('https://myadmin.tesla.com/#/matchUnmatch2?rnSearchStr=" + pathArray[3] + "')\">Match / Unmatch</button>");
+            let buttonnode = document.createElement("button");
+            buttonnode.setAttribute("size", "medium");
+            buttonnode.setAttribute("class", "tsl-color-blue tsl-size-medium tsl-shape-round tsl-button tsl-appearance-filled ng-star-inserted");
+            buttonnode.setAttribute("style", "background: #FF0000;");
+            buttonnode.setAttribute("onclick", "window.open('https://myadmin.tesla.com/#/matchUnmatch2?rnSearchStr=" + pathArray[3] + "')");
+            let buttontextnode = document.createTextNode("Match / Unmatch");
+            buttonnode.appendChild(buttontextnode);
+            propertylabel.appendChild(buttonnode);
+            //var CurrentHTML = propertylabel.innerHTML;
+            //propertylabel.innerHTML = (CurrentHTML + "</br><button size=\"medium\" class=\"tsl-color-blue tsl-size-medium tsl-shape-round tsl-button tsl-appearance-filled ng-star-inserted\" style=\"margin-right: 30px; background: #FF0000;\" onclick=\"window.open('https://myadmin.tesla.com/#/matchUnmatch2?rnSearchStr=" + pathArray[3] + "')\">Match / Unmatch</button>");
 
         } else if (propertylabel != null && headerVin != null) {
-            var CurrentHTML2 = headerVin.innerHTML;
-            headerVin.innerHTML = (CurrentHTML2 + "</br><button size=\"medium\" class=\"tsl-color-blue tsl-size-medium tsl-shape-round tsl-button tsl-appearance-filled ng-star-inserted\" style=\"margin-right: 30px;\" onclick=\"window.open('https://myadmin.tesla.com/#/matchUnmatch2?rnSearchStr=" + pathArray[3] + "')\">Match / Unmatch</button>");
+            let buttonnode = document.createElement("button");
+            buttonnode.setAttribute("size", "medium");
+            buttonnode.setAttribute("class", "tsl-color-blue tsl-size-medium tsl-shape-round tsl-button tsl-appearance-filled ng-star-inserted");
+            buttonnode.setAttribute("style", "background: #FF0000;");
+            buttonnode.setAttribute("onclick", "window.open('https://myadmin.tesla.com/#/matchUnmatch2?rnSearchStr=" + pathArray[3] + "')");
+            let buttontextnode = document.createTextNode("Match / Unmatch");
+            buttonnode.appendChild(buttontextnode);
+            headerVin.appendChild(buttonnode);
 
+            //var CurrentHTML2 = headerVin.innerHTML;
+            //headerVin.innerHTML = (CurrentHTML2 + "</br><button size=\"medium\" class=\"tsl-color-blue tsl-size-medium tsl-shape-round tsl-button tsl-appearance-filled ng-star-inserted\" style=\"margin-right: 30px; background: #FF0000;\" onclick=\"window.open('https://myadmin.tesla.com/#/matchUnmatch2?rnSearchStr=" + pathArray[3] + "')\">Match / Unmatch</button>");
         } else {
             VinMatch();
         };
@@ -39,7 +80,7 @@ function Masqray() {
                 var CurrentHTML2 = ogheadercell.innerHTML;
                 let result = CurrentHTML.replace("@", "@");
                 console.log(result);
-                ogheadercell.innerHTML = (CurrentHTML2 + "</br><button size=\"medium\" class=\"tsl-color-blue tsl-size-medium tsl-shape-round tsl-button tsl-appearance-filled ng-star-inserted\" style=\"margin-right: 30px;\" onclick=\"window.open('http://admin.tesla.com/sf-masquerade/" + result + "', '_blank')\">Masquerade</button>");
+                ogheadercell.innerHTML = (CurrentHTML2 + "</br><button size=\"medium\" class=\"tsl-color-blue tsl-size-medium tsl-shape-round tsl-button tsl-appearance-filled ng-star-inserted\" style=\"margin-right: 30px; background: #FF0000;\" onclick=\"window.open('http://admin.tesla.com/sf-masquerade/" + result + "', '_blank')\">Masquerade</button>");
 
             } else {
                 Masqray();
@@ -62,6 +103,7 @@ function TestPage() {
 
 (function() {
     VinMatch();
+    VinData();
     TestPage();
-    Masqray();
+    //Masqray();
 })();
