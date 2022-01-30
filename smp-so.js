@@ -33,6 +33,36 @@ function CleanPhoneNumber(index) {
     };
 };
 
+function MailToEmail(index) {
+    index = (index + 1);
+    if (index < 10) {
+        setTimeout(function () {
+            var DocumentIndexPage = document.getElementsByClassName("banner_listRow__2GZHP")[2];
+            if (DocumentIndexPage != null) {
+                var DocumentIndexPage2 = DocumentIndexPage.getElementsByClassName("banner_listItem__H4ijz")[1];
+                if (DocumentIndexPage2 != null) {
+                    var DocumentIndexPage3 = DocumentIndexPage.getElementsByClassName("banner_colorBlue__3NE-P banner_linkWrap__2A8Q7")[0];
+                    if (DocumentIndexPage3 != null) {
+                        var FixedData = DocumentIndexPage2.innerHTML;
+                        const node = document.createElement("a");
+                        node.setAttribute("href", "mailto:" + DocumentIndexPage3.innerText + "");
+                        node.setAttribute("style", "display: block; width: 155px; height: 25px; background: #4E9CAF; padding: 0px; text-align: center; border-radius: 5px; color: white; font-weight: bold; line-height: 25px;");
+                        const textnode = document.createTextNode("Open Outlook App");
+                        node.appendChild(textnode);
+                        DocumentIndexPage2.appendChild(node);
+                    } else {
+                        MailToEmail(index);
+                    }
+                } else {
+                    MailToEmail(index);
+                }
+            } else {
+                MailToEmail(index);
+            }
+        }, 1000);
+    };
+};
+
 /*
 function OpInfoClean(index) {
     if (index < 1000) {
@@ -71,5 +101,6 @@ function OpInfoClean(index) {
 
 (function() {
     CleanPhoneNumber(0);
+    MailToEmail(0);
     //OpInfoClean(0);
 })();
