@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         WDO NEW SETUP
-// @version      0.2
+// @version      0.9
 // @description  Adds new buttons
 // @author       Justin
 // @match        https://warpdrive.teslamotors.com/deliveryops/checkout/*
@@ -18,7 +18,7 @@ function VinData() {
             let buttonnode = document.createElement("button");
             buttonnode.setAttribute("size", "medium");
             buttonnode.setAttribute("class", "tsl-color-blue tsl-size-medium tsl-shape-round tsl-button tsl-appearance-filled ng-star-inserted");
-            buttonnode.setAttribute("style", "margin-top: 7px; background: #F000F0;");
+            buttonnode.setAttribute("style", "margin-top: 7px; background: linear-gradient(90deg, rgba(255,0,0,1) 0%, rgba(255,154,0,1) 10%, rgba(208,222,33,1) 20%, rgba(79,220,74,1) 30%, rgba(63,218,216,1) 40%, rgba(47,201,226,1) 50%, rgba(28,127,238,1) 60%, rgba(95,21,242,1) 70%, rgba(186,12,248,1) 80%, rgba(251,7,217,1) 90%, rgba(255,0,0,1) 100%);");
             buttonnode.setAttribute("onclick", "window.open('https://warpdrive.teslamotors.com/warpdocapi/api/Download/MonroneyDocumentAsFile?DocumentType=Monroney&Vin=" + vinlabel.innerText + "')");
             let buttontextnode = document.createTextNode("Monroney");
             buttonnode.appendChild(buttontextnode);
