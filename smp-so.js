@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         SALES OP
-// @version      0.9
+// @version      0.9a
 // @description  Adjusts visuals on Sales OPs
 // @author       Justin
 // @match        https://sales-prd.tesla.com/*
@@ -46,7 +46,7 @@ function MailToEmail(index) {
                         var FixedData = DocumentIndexPage2.innerHTML;
                         const node = document.createElement("a");
                         node.setAttribute("href", "mailto:" + DocumentIndexPage3.innerText + "");
-                        node.setAttribute("style", "display: block; width: 155px; height: 25px; background: #3E6AE1; padding: 0px; text-align: center; border-radius: 100px; color: white; font-weight: bold; line-height: 25px;");
+                        node.setAttribute("style", "display: block; width: 155px; height: 25px; background: #3E6AE1; padding: 0px; text-align: center; border-radius: 100px; color: white; font-weight: 600; font-size: 10px; line-height: 25px;");
                         const textnode = document.createTextNode("OPEN IN OUTLOOK");
                         node.appendChild(textnode);
                         DocumentIndexPage2.appendChild(node);
