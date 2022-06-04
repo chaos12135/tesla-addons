@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         WDO NEW SETUP
-// @version      0.9
+// @version      100.01
 // @description  Adds new buttons
 // @author       Justin
 // @match        https://warpdrive.teslamotors.com/deliveryops/checkout/*
@@ -117,5 +117,4 @@ function TestPage() {
     VinData();
     TestPage();
     MailToEmail();
-    Masqray();
 })();
