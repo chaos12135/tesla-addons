@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         DeliveryAdvisorHacks
-// @version      0.1
+// @version      100.01
 // @description  DeliveryAdvisorHacks
 // @author       Justin
 // @match        https://warpdrive.teslamotors.com/deliveryops/*
