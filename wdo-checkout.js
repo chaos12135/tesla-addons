@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Checkout Tab
-// @version      0.2
+// @version      100.01
 // @description  Brings back checkout tab
 // @author       Justin
 // @match        https://warpdrive.teslamotors.com/deliveryops*
@@ -17,7 +17,6 @@ function AddNewTab() {
             var navmenu = menulink.getElementsByTagName("nav")[0];
             var divnavmenu = navmenu.getElementsByTagName("div")[7];
             var menulinkvar = ('menu-link ' + divnavmenu.getAttributeNames()[0]);
-            console.log(menulinkvar);
 
             let buttonnode = document.createElement("a");
             buttonnode.setAttribute(divnavmenu.getAttributeNames()[0], "");
