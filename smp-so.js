@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         SALES OP
-// @version      0.9
+// @version      100.01
 // @description  Adjusts visuals on Sales OPs
 // @author       Justin
 // @match        https://sales-prd.tesla.com/*
