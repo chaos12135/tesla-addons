@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         DeliveryAdvisorHacks
-// @version      100.04
+// @version      100.05
 // @description  DeliveryAdvisorHacks
 // @author       Justin
 // @match        https://warpdrive.teslamotors.com/deliveryops/advisor?sidepanel_fullscreen=yes&rn=*
@@ -20,7 +20,7 @@ function ActivityCapLimit() {
             ActivityCapLimit();
         };
     }, 5000);
-    console.log('test');
+    //console.log('test');
 };
 
 function WDONotesFix(num) {
