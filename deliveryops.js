@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         DeliveryAdvisorHacks
-// @version      100.05
+// @version      100.09
 // @description  DeliveryAdvisorHacks
 // @author       Justin
 // @match        https://warpdrive.teslamotors.com/deliveryops/advisor?sidepanel_fullscreen=yes&rn=*
@@ -31,7 +31,7 @@ function WDONotesFix(num) {
             for (let i = 0; i < document.getElementsByClassName("wdo-notes").length; i++) {
                 document.getElementsByClassName("wdo-notes")[i].setAttribute("style", "inline-size: 350px; overflow-wrap: break-word;");
             }
-            WDONotesFix();
+            WDONotesFix(num);
         } else {
             num = (num + 1);
             if (num != 50) {
@@ -226,8 +226,8 @@ function FindSectionHeader() {
                             var VehicleModelDescription_ELEMENT = document.createElement("strong");
                             VehicleModelDescription_ELEMENT.setAttribute(sectionheader.getAttributeNames()[0], "");
                             VehicleModelDescription_ELEMENT.setAttribute("style", "font-size: 15px;");
-                            var new_element_VehicleModelDescription_ELEMENT_TEXT5_7_text = document.createTextNode("- Tow Hitch");
-                            VehicleModelDescription_ELEMENT.appendChild(VehicleModelDescription_ELEMENT);
+                            var VehicleModelDescription_ELEMENT_TEXT = document.createTextNode("- Tow Hitch");
+                            VehicleModelDescription_ELEMENT.appendChild(VehicleModelDescription_ELEMENT_TEXT);
                             NEW_INFO_ELEMENT_SECTION_1.appendChild(VehicleModelDescription_ELEMENT);
                         }
                     };
@@ -239,9 +239,42 @@ function FindSectionHeader() {
                     WORK_IN_PROGRESS.appendChild(WORK_IN_PROGRESS_TEXT);
                     NEW_INFO_ELEMENT_SECTION_1.appendChild(WORK_IN_PROGRESS);
 
+                    FixWDOButton();
                 }, 250);
             };
             VehicleNameLoader(0,0,0);
+
+            function DetectIfDelivered(num1, num2) {
+                setTimeout(function () {
+                    var DeliveryTypeDetails = document.getElementsByClassName("vehicle-delivered-accepted-details-status")[0];
+                    if (DeliveryTypeDetails) {
+                    } else {
+                        num1 = (num1 + 1);
+                        if (num1 != 50) {
+                            DetectIfDelivered(num1, num2);
+                        }
+                        return;
+                    }
+                    var DeliveryTypeDetails_2 = DeliveryTypeDetails.getElementsByTagName("div")[1];
+                    if (DeliveryTypeDetails_2) {
+                    } else {
+                        num2 = (num2 + 1);
+                        if (num2 != 50) {
+                            DetectIfDelivered(num1, num2);
+                        }
+                        return;
+                    }
+
+                    var DetectIfDelivered_ELEMENT = document.createElement("button");
+                    DetectIfDelivered_ELEMENT.setAttribute("size", "medium");
+                    DetectIfDelivered_ELEMENT.setAttribute("class", "tsl-color-blue tsl-size-medium tsl-shape-round tsl-button tsl-appearance-filled ng-star-inserted");
+                    DetectIfDelivered_ELEMENT.setAttribute("style", "background: #12bb00;");
+                    var DetectIfDelivered_ELEMENT_TEXT = document.createTextNode(DeliveryTypeDetails_2.innerHTML);
+                    DetectIfDelivered_ELEMENT.appendChild(DetectIfDelivered_ELEMENT_TEXT);
+                    NEW_INFO_ELEMENT_SECTION_1.appendChild(DetectIfDelivered_ELEMENT);
+                }, 250);
+            }
+            DetectIfDelivered(0, 0);
 
             function OrderDeliveryType(num1) {
                 setTimeout(function () {
@@ -528,7 +561,7 @@ function FindSectionHeader() {
                     }
                     PaymentEstimate_ELEMENT_2.appendChild(PaymentEstimate_ELEMENT_2_TEXT);
                     NEW_INFO_ELEMENT_SECTION_2.appendChild(PaymentEstimate_ELEMENT_2);
-                }, 250);
+                }, 1000);
             };
             PaymentEstimate(0);
 
@@ -649,6 +682,8 @@ function FindSectionHeader() {
                     CreditDecision_ELEMENT_2.setAttribute(sectionheader.getAttributeNames()[0], "");
                     if ((CreditDecisionDetails_6.innerHTML).trim() == 'ACTIVE') {
                         CreditDecision_ELEMENT_2.setAttribute("style", "color: lime;");
+                    } else if ((CreditDecisionDetails_6.innerHTML).trim() == 'CONFIRMED') {
+                        CreditDecision_ELEMENT_2.setAttribute("style", "color: orange;");
                     }
                     var CreditDecision_ELEMENT_2_TEXT = document.createTextNode((CreditDecisionDetails_6.innerHTML).trim());
                     CreditDecision_ELEMENT_2.appendChild(CreditDecision_ELEMENT_2_TEXT);
@@ -675,6 +710,8 @@ function FindSectionHeader() {
                     CreditDecision_ELEMENT_2.setAttribute(sectionheader.getAttributeNames()[0], "");
                     if ((CreditDecisionDetails_7.innerHTML).trim() == 'APPROVED') {
                         CreditDecision_ELEMENT_2.setAttribute("style", "color: lime;");
+                    } else if ((CreditDecisionDetails_7.innerHTML).trim() == 'PENDING') {
+                        CreditDecision_ELEMENT_2.setAttribute("style", "color: orange;");
                     }
                     var CreditDecision_ELEMENT_2_TEXT = document.createTextNode((CreditDecisionDetails_7.innerHTML).trim());
                     CreditDecision_ELEMENT_2.appendChild(CreditDecision_ELEMENT_2_TEXT);
@@ -701,6 +738,10 @@ function FindSectionHeader() {
                     CreditDecision_ELEMENT_2.setAttribute(sectionheader.getAttributeNames()[0], "");
                     if ((CreditDecisionDetails_8.innerHTML).trim() == 'EXPIRED') {
                         CreditDecision_ELEMENT_2.setAttribute("style", "color: red;");
+                    } else if ((CreditDecisionDetails_8.innerHTML).trim() == 'CONFIRMED') {
+                        CreditDecision_ELEMENT_2.setAttribute("style", "color: orange;");
+                    } else if ((CreditDecisionDetails_8.innerHTML).trim() == 'CREATED') {
+                        CreditDecision_ELEMENT_2.setAttribute("style", "color: orange;");
                     }
                     var CreditDecision_ELEMENT_2_TEXT = document.createTextNode((CreditDecisionDetails_8.innerHTML).trim());
                     CreditDecision_ELEMENT_2.appendChild(CreditDecision_ELEMENT_2_TEXT);
@@ -816,12 +857,12 @@ function FindSectionHeader() {
         } else {
             FindSectionHeader();
         };
-    }, 3000);
+    }, 3250);
 };
 
 
 (function() {
     ActivityCapLimit();
-    WDONotesFix();
+    WDONotesFix(0);
     FindSectionHeader();
 })();
