@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         DeliveryAdvisorHacks
-// @version      100.09
+// @version      100.10
 // @description  DeliveryAdvisorHacks
 // @author       Justin
 // @match        https://warpdrive.teslamotors.com/deliveryops/advisor?sidepanel_fullscreen=yes&rn=*
