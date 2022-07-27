@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         WDO NEW SETUP
-// @version      100.10
+// @version      100.12
 // @description  Adds new buttons
 // @author       Justin
 // @match        https://warpdrive.teslamotors.com/deliveryops/checkout/*
@@ -8,6 +8,114 @@
 // @grant        none
 // ==/UserScript==
 
+
+function VinData() {
+    setTimeout(function () {
+        var headerVin = document.getElementsByClassName("header-Vin")[0];
+        //var pathArray = window.location.pathname.split('/');
+
+        if (headerVin != null) {
+            var vinlabel = document.getElementsByClassName("vin-label")[0];
+            let buttonnode = document.createElement("button");
+            buttonnode.setAttribute("size", "medium");
+            buttonnode.setAttribute("class", "tsl-color-blue tsl-size-medium tsl-shape-round tsl-button tsl-appearance-filled ng-star-inserted");
+            buttonnode.setAttribute("style", "margin-top: 7px; background: #FFA500;");
+            buttonnode.setAttribute("onclick", "window.open('https://warpdrive.teslamotors.com/warpdocapi/api/Download/MonroneyDocumentAsFile?DocumentType=Monroney&Vin=" + vinlabel.innerText + "')");
+            let buttontextnode = document.createTextNode("Monroney");
+            buttonnode.appendChild(buttontextnode);
+            headerVin.appendChild(buttonnode);
+
+            //var CurrentHTML3 = vinlabel.innerHTML;
+            //vinlabel.innerHTML = (CurrentHTML3 + "</br><button size=\"medium\" class=\"tsl-color-blue tsl-size-medium tsl-shape-round tsl-button tsl-appearance-filled ng-star-inserted\" style=\"margin-right: 30px; background: #F000F0;\" onclick=\"window.open('https://warpdrive.teslamotors.com/warpdocapi/api/Download/MonroneyDocumentAsFile?DocumentType=Monroney&Vin=" + vinlabel.innerText + "')\">Monroney</button></br>");
+        } else {
+            VinData();
+        };
+    }, 1000);
+};
+
+
+function MailToEmail() {
+    setTimeout(function () {
+        var headercell = document.getElementsByClassName("header-cell")[1];
+        if (headercell != null) {
+            var chkdiv = headercell.getElementsByTagName('div')[3];
+            if (chkdiv != null) {
+                let getvalueemail = chkdiv.innerHTML;
+                const node = document.createElement("a");
+                node.setAttribute("href", "mailto:" + (getvalueemail) + "");
+                node.setAttribute("class", "tsl-color-blue tsl-size-medium tsl-shape-round tsl-button tsl-appearance-filled ng-star-inserted");
+                const textnode = document.createTextNode("Open in Outlook");
+                node.appendChild(textnode);
+                headercell.appendChild(node);
+
+
+                let buttonnode = document.createElement("a");
+                buttonnode.setAttribute("ng-if", "tab.isEnabled  && tab.url");
+                buttonnode.setAttribute("class", "tsl-color-blue tsl-size-medium tsl-shape-round tsl-button tsl-appearance-filled ng-star-inserted");
+                buttonnode.setAttribute("style", "margin-top: 7px; background: linear-gradient(90deg, rgba(255,0,0,1) 0%, rgba(255,154,0,1) 10%, rgba(208,222,33,1) 20%, rgba(79,220,74,1) 30%, rgba(63,218,216,1) 40%, rgba(47,201,226,1) 50%, rgba(28,127,238,1) 60%, rgba(95,21,242,1) 70%, rgba(186,12,248,1) 80%, rgba(251,7,217,1) 90%, rgba(255,0,0,1) 100%);");
+                buttonnode.setAttribute("href", "https://admin.tesla.com/sf-masquerade/" + (getvalueemail) + "");
+                buttonnode.setAttribute("target", "_blank");
+                let buttontextnode = document.createTextNode("Masquerade");
+                buttonnode.appendChild(buttontextnode);
+                headercell.appendChild(buttonnode);
+            } else {
+                MailToEmail();
+            };
+        } else {
+            MailToEmail();
+        };
+    }, 1000);
+};
+
+function VinMatch() {
+    setTimeout(function () {
+        var headerVin = document.getElementsByClassName("header-Vin")[0];
+        var propertylabel = document.getElementsByClassName("property-label")[0];
+        var pathArray = window.location.pathname.split('/');
+
+        if (propertylabel != null && headerVin == null) {
+            let buttonnode = document.createElement("button");
+            buttonnode.setAttribute("size", "medium");
+            buttonnode.setAttribute("class", "tsl-color-blue tsl-size-medium tsl-shape-round tsl-button tsl-appearance-filled ng-star-inserted");
+            buttonnode.setAttribute("style", "background: #FF0000;");
+            buttonnode.setAttribute("onclick", "window.open('https://myadmin.tesla.com/#/matchUnmatch2?rnSearchStr=" + pathArray[3] + "')");
+            let buttontextnode = document.createTextNode("Match / Unmatch");
+            buttonnode.appendChild(buttontextnode);
+            propertylabel.appendChild(buttonnode);
+            //var CurrentHTML = propertylabel.innerHTML;
+            //propertylabel.innerHTML = (CurrentHTML + "</br><button size=\"medium\" class=\"tsl-color-blue tsl-size-medium tsl-shape-round tsl-button tsl-appearance-filled ng-star-inserted\" style=\"margin-right: 30px; background: #FF0000;\" onclick=\"window.open('https://myadmin.tesla.com/#/matchUnmatch2?rnSearchStr=" + pathArray[3] + "')\">Match / Unmatch</button>");
+
+        } else if (propertylabel != null && headerVin != null) {
+            let buttonnode = document.createElement("button");
+            buttonnode.setAttribute("size", "medium");
+            buttonnode.setAttribute("class", "tsl-color-blue tsl-size-medium tsl-shape-round tsl-button tsl-appearance-filled ng-star-inserted");
+            buttonnode.setAttribute("style", "background: #FF0000;");
+            buttonnode.setAttribute("onclick", "window.open('https://myadmin.tesla.com/#/matchUnmatch2?rnSearchStr=" + pathArray[3] + "')");
+            let buttontextnode = document.createTextNode("Match / Unmatch");
+            buttonnode.appendChild(buttontextnode);
+            headerVin.appendChild(buttonnode);
+
+            //var CurrentHTML2 = headerVin.innerHTML;
+            //headerVin.innerHTML = (CurrentHTML2 + "</br><button size=\"medium\" class=\"tsl-color-blue tsl-size-medium tsl-shape-round tsl-button tsl-appearance-filled ng-star-inserted\" style=\"margin-right: 30px; background: #FF0000;\" onclick=\"window.open('https://myadmin.tesla.com/#/matchUnmatch2?rnSearchStr=" + pathArray[3] + "')\">Match / Unmatch</button>");
+        } else {
+            VinMatch();
+        };
+    }, 1000);
+};
+
+function TestPage() {
+    /*
+    setTimeout(function () {
+        var headercell = document.getElementsByClassName("header-cell")[1].getElementsByTagName("div")[3];
+        alert(headercell.innerHTML);
+    }, 5000);
+    */
+}
+
+
 (function() {
-    console.log('Why would I keep supporting this when Tesla fired me?');
+    VinMatch();
+    VinData();
+    TestPage();
+    MailToEmail();
 })();
