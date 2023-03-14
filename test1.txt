@@ -1,0 +1,18 @@
+<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+  <div class="calendar">
+	<div class="calendar-header">
+	  <div class="calendar-month">
+		<span class="calendar-month-year"></span>
+		<span class="calendar-month-name"></span>
+	  </div>
+	  <div class="calendar-buttons">
+		<button class="btn btn-primary btn" id="prev-button">&lt;</button>
+		<button class="btn btn-primary btn" id="next-button">&gt;</button>
+	  </div>
+	</div>
+	<div class="calendar-body">
+	  <div class="calendar-weekdays"></div>
+	  <div class="calendar-dates"></div>
+	</div>
+  </div>
+</div>
